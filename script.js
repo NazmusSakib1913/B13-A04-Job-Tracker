@@ -181,4 +181,19 @@ function updateDashboard() {
     rejectedCountEl.textContent = rejectedCount;
 }
 
+
+function setStatus(id, newStatus) {
+    const job = jobs.find(j => j.id === id);
+    if (!job) return;
+
+    if (job.status === newStatus) {
+        job.status = "not-applied";
+    } else {
+        job.status = newStatus;
+    }
+
+    renderJobs();
+}
+
+
 renderJobs();
