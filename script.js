@@ -95,3 +95,51 @@ const tabButtons = document.querySelectorAll(".tab");
 const sidebar = document.getElementById("sidebar");
 const menuToggle = document.getElementById("menuToggle");
 const sidebarOverlay = document.getElementById("sidebarOverlay");
+
+
+function createJobCardHTML(job) {
+    const statusLabel = job.status === "not-applied"
+        ? "Not Applied"
+        : job.status === "interview"
+            ? "Interview"
+            : "Rejected";
+
+    const statusClass = job.status;
+
+    const isInterviewSelected = job.status === "interview";
+    const isRejectedSelected = job.status === "rejected";
+
+    return `
+        <div class="job-card" data-id="${job.id}" id="jobCard-${job.id}">
+            <div class="job-card-header">
+                <div>
+                    <div class="company-name">${job.companyName}</div>
+                    <div class="position">${job.position}</div>
+                </div>
+                <button class="btn-delete" onclick="deleteJob(${job.id})" aria-label="Delete job" title="Delete">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+
+            <div class="job-meta">
+                <span>${job.location}</span>
+                <span>${job.type}</span>
+                <span>${job.salary}</span>
+            </div>
+
+            <div class="status-badge ${statusClass}">${statusLabel}</div>
+
+            <p class="job-description">${job.description}</p>
+
+            <div class="job-actions">
+                <button class="btn btn-interview ${isInterviewSelected ? 'selected' : ''}" onclick="setStatus(${job.id}, 'interview')" id="btnInterview-${job.id}">
+                    Interview
+                </button>
+                <button class="btn btn-rejected ${isRejectedSelected ? 'selected' : ''}" onclick="setStatus(${job.id}, 'rejected')" id="btnRejected-${job.id}">
+                    Rejected
+                </button>
+            </div>
+        </div>
+    `;
+}
+
