@@ -170,3 +170,15 @@ function renderJobs() {
 
     updateDashboard();
 }
+
+function updateDashboard() {
+    const total = jobs.length;
+    const interviewCount = jobs.filter(j => j.status === "interview").length;
+    const rejectedCount = jobs.filter(j => j.status === "rejected").length;
+
+    totalCountEl.textContent = total;
+    interviewCountEl.textContent = interviewCount;
+    rejectedCountEl.textContent = rejectedCount;
+}
+
+renderJobs();
