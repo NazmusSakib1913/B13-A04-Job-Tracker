@@ -81,3 +81,17 @@ const jobsData = [
         status: "not-applied"
     }
 ];
+
+let jobs = JSON.parse(JSON.stringify(jobsData));
+let activeTab = "all";
+
+const jobsContainer = document.getElementById("jobsContainer");
+const emptyState = document.getElementById("emptyState");
+const totalCountEl = document.getElementById("totalCount");
+const interviewCountEl = document.getElementById("interviewCount");
+const rejectedCountEl = document.getElementById("rejectedCount");
+const jobsCountEl = document.getElementById("jobsCount");
+const tabButtons = document.querySelectorAll(".tab");
+const sidebar = document.getElementById("sidebar");
+const menuToggle = document.getElementById("menuToggle");
+const sidebarOverlay = document.getElementById("sidebarOverlay");
