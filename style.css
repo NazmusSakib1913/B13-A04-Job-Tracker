@@ -584,3 +584,17 @@ body {
 }
 
 
+@media (max-width: 400px) {
+    .main-content {
+        padding: 68px 10px 24px;
+    }
+
+    .jobs-section {
+        padding: 16px 12px;
+    }
+
+    .job-card {
+        padding: 14px;
+    }
+}
+
