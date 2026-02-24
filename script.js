@@ -143,3 +143,30 @@ function createJobCardHTML(job) {
     `;
 }
 
+
+
+function renderJobs() {
+    let filteredJobs;
+
+    if (activeTab === "all") {
+        filteredJobs = jobs;
+    } else if (activeTab === "interview") {
+        filteredJobs = jobs.filter(j => j.status === "interview");
+    } else {
+        filteredJobs = jobs.filter(j => j.status === "rejected");
+    }
+
+    jobsCountEl.textContent = `${filteredJobs.length} job${filteredJobs.length !== 1 ? 's' : ''}`;
+
+    if (filteredJobs.length === 0) {
+        jobsContainer.innerHTML = "";
+        jobsContainer.classList.add("hidden");
+        emptyState.classList.remove("hidden");
+    } else {
+        emptyState.classList.add("hidden");
+        jobsContainer.classList.remove("hidden");
+        jobsContainer.innerHTML = filteredJobs.map(createJobCardHTML).join("");
+    }
+
+    updateDashboard();
+}
