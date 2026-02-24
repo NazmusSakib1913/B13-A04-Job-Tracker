@@ -503,3 +503,84 @@ body {
     }
 }
 
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .mobile-header {
+        display: flex;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 72px 16px 32px;
+    }
+
+    .dashboard-title {
+        font-size: 1.4rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .stat-card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .jobs-section {
+        padding: 20px 16px;
+    }
+
+    .jobs-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .tabs {
+        gap: 6px;
+    }
+
+    .tab {
+        padding: 6px 16px;
+        font-size: 0.8rem;
+    }
+
+    .job-card {
+        padding: 18px;
+    }
+
+    .company-name {
+        font-size: 1rem;
+    }
+
+    .job-meta {
+        font-size: 0.78rem;
+    }
+
+    .job-actions {
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 7px 16px;
+        font-size: 0.75rem;
+    }
+}
+
+
