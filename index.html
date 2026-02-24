@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Application Tracker</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
     <aside class="sidebar" id="sidebar">
         <div class="brand-container">
             <span class="brand-text">JobTracker</span>
         </div>
-        
+
         <nav class="sidebar-nav">
             <a href="#" class="nav-link">
                 <span>Home</span>
@@ -24,10 +27,58 @@
             </a>
         </nav>
     </aside>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <header class="mobile-header" id="mobileHeader">
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">::</button>
         <span class="mobile-brand">JobTracker</span>
     </header>
-    
+
+    <main class="main-content" id="mainContent">
+        <div class="container">
+
+            <section class="dashboard-section">
+                <h1 class="dashboard-title">Job Application Tracker</h1>
+                <div class="stats-grid">
+                    <div class="stat-card" id="statTotal">
+                        <span class="stat-label">Total</span>
+                        <span class="stat-value" id="totalCount">8</span>
+                    </div>
+                    <div class="stat-card" id="statInterview">
+                        <span class="stat-label">Interview</span>
+                        <span class="stat-value stat-interview" id="interviewCount">0</span>
+                    </div>
+                    <div class="stat-card" id="statRejected">
+                        <span class="stat-label">Rejected</span>
+                        <span class="stat-value stat-rejected" id="rejectedCount">0</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="jobs-section">
+                <div class="jobs-header">
+                    <h2 class="jobs-title">Available Jobs</h2>
+                    <span class="jobs-count" id="jobsCount">8 jobs</span>
+                </div>
+
+                <div class="tabs" id="tabs">
+                    <button class="tab active" data-tab="all" id="tabAll">All</button>
+                    <button class="tab" data-tab="interview" id="tabInterview">Interview</button>
+                    <button class="tab" data-tab="rejected" id="tabRejected">Rejected</button>
+                </div>
+
+                <div class="jobs-container" id="jobsContainer">
+                </div>
+
+                <div class="empty-state hidden" id="emptyState">
+                    <img src="/assets/jobs.png" alt="">
+                    <h3 class="empty-title">No jobs available</h3>
+                    <p class="empty-subtitle">Check back soon for new job opportunities</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,7 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 :root {
     --sidebar-width: 250px;
-    --clr-sidebar: #1e293b; 
+    --clr-sidebar: #1e293b;
+    --clr-sidebar-hover: rgba(255, 255, 255, 0.1);
     --transition: 0.3s ease-in-out;
+
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --clr-bg: #f1f5f9;
+    --clr-surface: #ffffff;
+    --clr-border: #e2e8f0;
+    --clr-text: #1e293b;
+    --clr-text-secondary: #64748b;
+    --clr-primary: #3b82f6;
+    --clr-primary-light: #60a5fa;
+
+    --clr-accent-green: #059669;
+    --clr-accent-green-bg: #d1fae5;
+    --clr-accent-red: #dc2626;
+    --clr-accent-red-bg: #fee2e2;
+
+    --clr-stat-interview: #059669;
+    --clr-stat-rejected: #dc2626;
+
+    --radius: 12px;
+    --radius-sm: 8px;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--clr-bg);
+    color: var(--clr-text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+}
+
+.sidebar-overlay.show {
+    display: block;
 }
 
 .sidebar {
@@ -81,4 +138,352 @@
 .mobile-brand {
     font-size: 1.1rem;
     font-weight: 700;
+}
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+.container {
+    max-width: 920px;
+    margin: 0 auto;
+}
+.dashboard-section {
+    margin-bottom: 40px;
+}
+
+.dashboard-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--clr-primary);
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.stat-card {
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--clr-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--clr-text);
+    line-height: 1.2;
+}
+
+.stat-interview {
+    color: var(--clr-stat-interview);
+}
+
+.stat-rejected {
+    color: var(--clr-stat-rejected);
+}
+
+.jobs-section {
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    box-shadow: var(--shadow-sm);
+}
+
+.jobs-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.jobs-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--clr-primary);
+}
+
+.jobs-count {
+    font-size: 0.9rem;
+    color: var(--clr-text-secondary);
+    font-weight: 500;
+    font-style: italic;
+}
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.tab {
+    padding: 8px 20px;
+    border: 1px solid var(--clr-border);
+    border-radius: 50px;
+    background: transparent;
+    color: var(--clr-text-secondary);
+    font-family: var(--font);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.tab:hover {
+    border-color: var(--clr-primary-light);
+    color: var(--clr-primary-light);
+}
+
+.tab.active {
+    background: var(--clr-primary);
+    color: #fff;
+    border-color: var(--clr-primary);
+}
+
+.jobs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.job-card {
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 24px;
+    position: relative;
+    transition: all var(--transition);
+    animation: cardFadeIn 0.35s ease forwards;
+}
+.job-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.job-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--clr-text);
+    margin-bottom: 4px;
+}
+
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.job-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: var(--shadow-sm);
+}
+
+.job-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.company-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--clr-text);
+}
+
+.position {
+    font-size: 0.9rem;
+    color: var(--clr-text-secondary);
+    margin-bottom: 8px;
+}
+
+.job-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--clr-text-secondary);
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.job-meta span::after {
+    content: '·';
+    margin-left: 8px;
+    color: #cbd5e1;
+}
+
+.job-meta span:last-child::after {
+    content: '';
+    margin-left: 0;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.status-badge.not-applied {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.status-badge.interview {
+    background: var(--clr-accent-green-bg);
+    color: var(--clr-accent-green);
+}
+
+.status-badge.rejected {
+    background: var(--clr-accent-red-bg);
+    color: var(--clr-accent-red);
+}
+
+.job-description {
+    font-size: 0.88rem;
+    color: var(--clr-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.job-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 20px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    font-family: var(--font);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.btn-interview {
+    background: transparent;
+    border-color: var(--clr-accent-green);
+    color: var(--clr-accent-green);
+}
+
+.btn-interview:hover {
+    background: var(--clr-accent-green);
+    color: #fff;
+}
+
+.btn-interview.selected {
+    background: var(--clr-accent-green);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+}
+
+.btn-rejected {
+    background: transparent;
+    border-color: var(--clr-accent-red);
+    color: var(--clr-accent-red);
+}
+
+.btn-rejected:hover {
+    background: var(--clr-accent-red);
+    color: #fff;
+}
+
+.btn-rejected.selected {
+    background: var(--clr-accent-red);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    transition: all var(--transition);
+    margin-left: auto;
+}
+
+.btn-delete:hover {
+    color: var(--clr-accent-red);
+    background: var(--clr-accent-red-bg);
+}
+
+.btn-delete svg {
+    width: 18px;
+    height: 18px;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.empty-state.hidden {
+    display: none;
+}
+
+.empty-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.empty-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--clr-primary-light);
+    margin-bottom: 6px;
+}
+
+.empty-subtitle {
+    font-size: 0.9rem;
+    color: var(--clr-text-secondary);
 }
