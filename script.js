@@ -195,5 +195,40 @@ function setStatus(id, newStatus) {
     renderJobs();
 }
 
+function deleteJob(id) {
+    const cardEl = document.getElementById(`jobCard-${id}`);
+    if (cardEl) {
+        cardEl.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+        cardEl.style.opacity = "0";
+        cardEl.style.transform = "translateX(30px)";
+        setTimeout(() => {
+            jobs = jobs.filter(j => j.id !== id);
+            renderJobs();
+        }, 300);
+    } else {
+        jobs = jobs.filter(j => j.id !== id);
+        renderJobs();
+    }
+} 
+tabButtons.forEach(btn => {
+    btn.addEventListener("click", function () {
+        tabButtons.forEach(b => b.classList.remove("active"));
+        this.classList.add("active");
+        activeTab = this.dataset.tab;
+        renderJobs();
+    });
+});
+
+menuToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+    sidebarOverlay.classList.toggle("show");
+});
+
+sidebarOverlay.addEventListener("click", () => {
+    sidebar.classList.remove("open");
+    sidebarOverlay.classList.remove("show");
+});
+
+
 
 renderJobs();
